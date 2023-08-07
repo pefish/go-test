@@ -7,6 +7,38 @@ import (
 	"testing"
 )
 
+func In(t *testing.T, expected []interface{}, actual interface{}) {
+	isIn := false
+	for _, e := range expected {
+		if reflect.DeepEqual(e, actual) {
+			isIn = true
+			break
+		}
+	}
+	if !isIn {
+		_, file, line, _ := runtime.Caller(1)
+		t.Logf("\033[31m%s:%d:\n\n\t(expected) In: %#v\n\n\tgot:  %#v\033[39m\n\n",
+			filepath.Base(file), line, expected, actual)
+		t.FailNow()
+	}
+}
+
+func NotIn(t *testing.T, expected []interface{}, actual interface{}) {
+	isIn := false
+	for _, e := range expected {
+		if reflect.DeepEqual(e, actual) {
+			isIn = true
+			break
+		}
+	}
+	if isIn {
+		_, file, line, _ := runtime.Caller(1)
+		t.Logf("\033[31m%s:%d:\n\n\t(expected) NotIn: %#v\n\n\tgot:  %#v\033[39m\n\n",
+			filepath.Base(file), line, expected, actual)
+		t.FailNow()
+	}
+}
+
 func Equal(t *testing.T, expected, actual interface{}) {
 	if !reflect.DeepEqual(expected, actual) {
 		_, file, line, _ := runtime.Caller(1)

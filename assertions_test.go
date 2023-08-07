@@ -9,3 +9,11 @@ func TestEqual(t *testing.T) {
 func TestNotEqual(t *testing.T) {
 	NotEqual(t, 1, 2)
 }
+
+func TestIn(t *testing.T) {
+	In(t, []interface{}{"aa", "bb"}, "aa")
+}
+
+func TestNotIn(t *testing.T) {
+	NotIn(t, []interface{}{"aa", "bb"}, "aaa")
+}
