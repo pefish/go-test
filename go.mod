@@ -1,3 +1,3 @@
-module github.com/pefish/go-test-assert
+module github.com/pefish/go-test
 
 go 1.20
