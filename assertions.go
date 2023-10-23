@@ -1,4 +1,4 @@
-package test
+package go_test_
 
 import (
 	"path/filepath"
